@@ -1,7 +1,8 @@
 Source: udisks2
 Section: admin
 Priority: optional
-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
+Maintainer: Cihangir Akturk <cihangir.akturk@pardus.org.tr>
+XSBC-Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
 Uploaders: Michael Biebl <biebl@debian.org>,
            Martin Pitt <mpitt@debian.org>,
 Build-Depends: debhelper (>= 9),
