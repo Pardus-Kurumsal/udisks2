@@ -1,3 +1,12 @@
+udisks2 (2.1.8-1pardus1) onyedi; urgency=medium
+
+  [ Cihangir Akturk ]
+  * debian/patches: fix app crash when partition remove button clicked
+  * debian/control: take maintainership till this fixed by stretch
+  * pardus CI integration
+
+ -- Cihangir Akturk <cihangir.akturk@pardus.org.tr>  Fri, 20 Oct 2017 14:10:34 +0300
+
 udisks2 (2.1.8-1) unstable; urgency=medium
 
   * New upstream version:
