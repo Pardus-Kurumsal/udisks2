@@ -1,3 +1,1 @@
-# cherry-picked from upstream
-
-# Debian patches for udisks
+0001-Fix-crash-when-partition-remove-button-clicked.patch

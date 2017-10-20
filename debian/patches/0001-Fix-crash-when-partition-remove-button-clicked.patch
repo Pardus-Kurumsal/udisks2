@@ -1,0 +1,38 @@
+From: Cihangir Akturk <cihangir.akturk@pardus.org>
+Date: Fri, 20 Oct 2017 14:00:44 +0300
+Subject: Fix crash when partition remove button clicked
+
+Signed-off-by: Cihangir Akturk <cihangir.akturk@pardus.org>
+---
+ po/tr.po                  | 4 ++--
+ udisks/udisksobjectinfo.c | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/po/tr.po b/po/tr.po
+index 46556f2..298ba83 100644
+--- a/po/tr.po
++++ b/po/tr.po
+@@ -2481,8 +2481,8 @@ msgstr "Ses %s"
+ #: ../udisks/udisksobjectinfo.c:832
+ #, c-format
+ msgctxt "part-drive"
+-msgid "Partition %u of %s"
+-msgstr "%s'in %u bölümü"
++msgid "Partition %1$u of %2$s"
++msgstr "%2$s'in %1$u bölümü"
+ 
+ #. Translators: String used for one-liner description of drive.
+ #. *              The first %s is the description of the object (e.g. "80 GB
+diff --git a/udisks/udisksobjectinfo.c b/udisks/udisksobjectinfo.c
+index 68eb3ae..89ea88a 100644
+--- a/udisks/udisksobjectinfo.c
++++ b/udisks/udisksobjectinfo.c
+@@ -829,7 +829,7 @@ udisks_client_get_object_info_for_drive (UDisksClient     *client,
+        *              The %u is the partition number.
+        *              The %s is the description for the drive (e.g. "2 GB Thumb Drive").
+        */
+-      s = g_strdup_printf (C_("part-drive", "Partition %u of %s"),
++      s = g_strdup_printf (C_("part-drive", "Partition %1$u of %2$s"),
+                            udisks_partition_get_number (partition), info->description);
+       g_free (info->description);
+       info->description = s;
