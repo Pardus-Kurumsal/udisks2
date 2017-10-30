@@ -1,3 +1,9 @@
+udisks2 (2.1.8-1pardus2) onyedi; urgency=medium
+
+  * Add patches
+
+ -- Yunusemre Şentürk <yunusemre.senturk@pardus.org.tr>  Mon, 30 Oct 2017 14:22:27 +0300
+
 udisks2 (2.1.8-1pardus1) onyedi; urgency=medium
 
   [ Cihangir Akturk ]
