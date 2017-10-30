@@ -1,0 +1,78 @@
+From: yunusem <yunusemre.senturk@pardus.org.tr>
+Date: Mon, 30 Oct 2017 14:18:54 +0300
+Subject: Fix crash related translation bug that mixes up unsigned_int and
+ string
+
+---
+ po/tr.po                  | 12 ++++++------
+ udisks/udisksobjectinfo.c |  6 +++---
+ 2 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/po/tr.po b/po/tr.po
+index 298ba83..3549579 100644
+--- a/po/tr.po
++++ b/po/tr.po
+@@ -2206,8 +2206,8 @@ msgstr "Blok Aygıtı"
+ #: ../udisks/udisksobjectinfo.c:265
+ #, c-format
+ msgctxt "part-block"
+-msgid "Partition %u of %s"
+-msgstr "%s'in %u bölümü"
++msgid "Partition %1$u of %2$s"
++msgstr "%2$s'in %1$u bölümü"
+ 
+ #. Translators: String used for one-liner description of a block device.
+ #. *              The first %s is the description of the object (e.g. "50 GB
+@@ -2235,8 +2235,8 @@ msgstr "Döngü Aygıtı"
+ #: ../udisks/udisksobjectinfo.c:319
+ #, c-format
+ msgctxt "part-loop"
+-msgid "Partition %u of %s"
+-msgstr "%s'in %u bölümü"
++msgid "Partition %1$u of %2$s"
++msgstr "%2$s'in %1$u bölümü"
+ 
+ #. Translators: String used for one-liner description of a loop device.
+ #. *              The first %s is the description of the object (e.g. "2 GB
+@@ -2301,8 +2301,8 @@ msgstr "%s %s"
+ #: ../udisks/udisksobjectinfo.c:415
+ #, c-format
+ msgctxt "part-raid"
+-msgid "Partition %u of %s"
+-msgstr "%s'in %u bölümü"
++msgid "Partition %1$u of %2$s"
++msgstr "%2$s'in %1$u bölümü"
+ 
+ #. Translators: String used for one-liner description of running RAID array.
+ #. *              The first %s is the array name (e.g. "AlphaGo").
+diff --git a/udisks/udisksobjectinfo.c b/udisks/udisksobjectinfo.c
+index 89ea88a..7e8ea39 100644
+--- a/udisks/udisksobjectinfo.c
++++ b/udisks/udisksobjectinfo.c
+@@ -262,7 +262,7 @@ udisks_client_get_object_info_for_block (UDisksClient     *client,
+        *              The %u is the partition number.
+        *              The %s is the description for the block device (e.g. "5 GB Block Device").
+        */
+-      s = g_strdup_printf (C_("part-block", "Partition %u of %s"),
++      s = g_strdup_printf (C_("part-block", "Partition %1$u of %2$s"),
+                            udisks_partition_get_number (partition), info->description);
+       g_free (info->description);
+       info->description = s;
+@@ -316,7 +316,7 @@ udisks_client_get_object_info_for_loop (UDisksClient     *client,
+        *              The %u is the partition number.
+        *              The %s is the description for the loop device (e.g. "5 GB Loop Device").
+        */
+-      s = g_strdup_printf (C_("part-loop", "Partition %u of %s"),
++      s = g_strdup_printf (C_("part-loop", "Partition %1$u of %2$s"),
+                            udisks_partition_get_number (partition), info->description);
+       g_free (info->description);
+       info->description = s;
+@@ -412,7 +412,7 @@ udisks_client_get_object_info_for_mdraid (UDisksClient     *client,
+        *              The %u is the partition number.
+        *              The %s is the description for the drive (e.g. "2 TB RAID-5").
+        */
+-      s = g_strdup_printf (C_("part-raid", "Partition %u of %s"),
++      s = g_strdup_printf (C_("part-raid", "Partition %1$u of %2$s"),
+                            udisks_partition_get_number (partition), info->description);
+       g_free (info->description);
+       info->description = s;
